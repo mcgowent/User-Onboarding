@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 
+import Onboarded from './Onboarded'
 
 const Forms = ({ errors, touched, values, handleSubmit, status }) => {
     const [users, setUsers] = useState([]);
@@ -27,10 +28,19 @@ const Forms = ({ errors, touched, values, handleSubmit, status }) => {
                     <p className="error">{errors.email}</p>
                 )}
 
-                <Field type="text" name="password" placeholder="Password" />
+                <Field type="password" name="password" placeholder="Password" />
                 {touched.password && errors.password && (
                     <p className="error">{errors.password}</p>
                 )}
+
+
+                <Field component="select" className="food-select" name="role">
+                    <option>Please Choose a Career Field</option>
+                    <option value="Front End Developer">Front End Developer</option>
+                    <option value="Back End Developer">Back End Developer</option>
+                    <option value="UX">UX</option>
+                </Field>
+
 
                 <label className="checkbox-container">
                     Click To Agree to Terms of Service
@@ -40,17 +50,18 @@ const Forms = ({ errors, touched, values, handleSubmit, status }) => {
 
                 <button type="submit">Submit!</button>
             </Form>
+            <p>On Boarded Users:</p>
             {users.map(users => (
-                <p key={users.id}>{users.name}</p>
+                <Onboarded key={users.id} data={users} />
             ))}
-
         </div>
     )
 }
 
 const FormikForm = withFormik({
-    mapPropsToValues({ name, email, password, terms }) {
+    mapPropsToValues({ name, email, password, terms, role }) {
         return {
+            role: role || '',
             terms: terms || false,
             name: name || '',
             email: email || '',
