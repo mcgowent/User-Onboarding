@@ -15,14 +15,14 @@ const Forms = ({ errors, touched, values, handleSubmit, status }) => {
 
     return (
         <div className="animal-form">
-            <h1>Animal Form</h1>
+            <h1>Sign Up</h1>
             <Form>
                 <Field type="text" name="name" placeholder="Name" />
                 {touched.name && errors.name && (
                     <p className="error">{errors.name}</p>
                 )}
 
-                <Field type="text" name="email" placeholder="Email" />
+                <Field type="email" name="email" placeholder="Email" />
                 {touched.email && errors.email && (
                     <p className="error">{errors.email}</p>
                 )}
