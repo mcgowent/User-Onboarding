@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 
 import Onboarded from './Onboarded'
 
-const Forms = ({ errors, touched, values, handleSubmit, status }) => {
+const Forms = ({ errors, touched, values, status }) => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -76,7 +76,7 @@ const FormikForm = withFormik({
         terms: Yup.boolean().oneOf([true])
     }),
 
-    handleSubmit(values, { setStatus }) {
+    handleSubmit(values, { setStatus, resetForm }) {
         axios
             .post('https://reqres.in/api/users/', values)
             .then(res => {
@@ -84,6 +84,8 @@ const FormikForm = withFormik({
                 setStatus(res.data);
             })
             .catch(err => console.log(err.response));
+        resetForm()
+
     }
 })(Forms); // currying functions in Javascript
 
