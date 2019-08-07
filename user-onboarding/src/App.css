@@ -34,6 +34,7 @@ body {
 }
 
 .animal-form {
+  border-radius: 5px;
   width: 460px;
   margin: auto;
   padding: 32px;
@@ -59,7 +60,7 @@ textarea {
 }
 
 input:focus {
-  border-color: #007eff;
+  border-color: #68a57f;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
     0 0 0 3px rgba(0, 126, 255, 0.1);
   outline: none;
@@ -159,7 +160,7 @@ label {
 
 /* When the checkbox is checked, add a blue background */
 .checkbox-container input:checked ~ .checkmark {
-  background-color: #2196f3;
+  background-color: #53625a;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -188,12 +189,12 @@ label {
 }
 
 button {
-  max-width: 150px;
+  width: 100%;
   margin: 32px 0;
   padding: 12px 20px;
   border-style: none;
   border-radius: 5px;
-  background-color: #08c;
+  background-color: rgb(113, 131, 139);
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
   font-size: 17px;
   font-weight: 500;
