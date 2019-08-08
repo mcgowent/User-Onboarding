@@ -47,6 +47,9 @@ const Forms = ({ errors, touched, values, status }) => {
                 <Field type="checkbox" name="terms" checked={values.terms} />
                     <span className="checkmark" />
                 </label>
+                {touched.terms && errors.terms && (
+                    <p className="error">{errors.terms}</p>
+                )}
 
                 <button type="submit">Submit!</button>
             </Form>
@@ -73,7 +76,7 @@ const FormikForm = withFormik({
         name: Yup.string().required('Username Required'),
         email: Yup.string().required('Email Required'),
         password: Yup.string().required('Password Required'),
-        terms: Yup.boolean().oneOf([true])
+        terms: Yup.bool().oneOf([true], 'Accept Or Die')
     }),
 
     handleSubmit(values, { setStatus, resetForm }) {
